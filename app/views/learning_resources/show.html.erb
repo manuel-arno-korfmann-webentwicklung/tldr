@@ -1,14 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Url:</strong>
-  <%= @learning_resource.url %>
+  <%= link_to @learning_resource.description, @learning_resource.url, target: '_blank' %>
 </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @learning_resource.description %>
-</p>
+<h2>
+	Users waiting (count: 0)
+</h2>
 
-<%= link_to 'Edit', edit_learning_resource_path(@learning_resource) %> |
+<%= button_to "Enroll" %>
+
 <%= link_to 'Back', learning_resources_path %>

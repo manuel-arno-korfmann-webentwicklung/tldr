@@ -1,5 +1,6 @@
 class LearningResourcesController < ApplicationController
   before_action :set_learning_resource, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:show]
 
   # GET /learning_resources
   # GET /learning_resources.json
@@ -11,7 +12,7 @@ class LearningResourcesController < ApplicationController
   # GET /learning_resources/1.json
   def show
   end
-
+  
   # GET /learning_resources/new
   def new
     @learning_resource = LearningResource.new

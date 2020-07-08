@@ -16,9 +16,7 @@
       <tr>
         <td><%= learning_resource.url %></td>
         <td><%= learning_resource.description %></td>
-        <td><%= link_to 'Show', learning_resource %></td>
-        <td><%= link_to 'Edit', edit_learning_resource_path(learning_resource) %></td>
-        <td><%= link_to 'Destroy', learning_resource, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Join a study group', learning_resource %></td>
       </tr>
     <% end %>
   </tbody>
