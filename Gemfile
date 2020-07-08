@@ -61,3 +61,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "omniauth-zoom", "~> 0.1.0"
 
 gem "devise", "~> 4.7"
+
+gem 'zoom_rb'
+
+#gem 'bootstrap', '5.0.0-alpha1'
+

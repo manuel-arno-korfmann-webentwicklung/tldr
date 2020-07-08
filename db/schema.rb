@@ -10,16 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_08_011458) do
+ActiveRecord::Schema.define(version: 2020_07_08_113034) do
 
   create_table "learning_resources", force: :cascade do |t|
-    t.text "url"
-    t.text "description"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "resources", force: :cascade do |t|
     t.text "url"
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
@@ -36,31 +29,17 @@ ActiveRecord::Schema.define(version: 2020_07_08_011458) do
   end
 
   create_table "study_groups", force: :cascade do |t|
-    t.integer "learning_resources_id", null: false
+    t.integer "learning_resource_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["learning_resources_id"], name: "index_study_groups_on_learning_resources_id"
+    t.boolean "finished"
+    t.index ["learning_resource_id"], name: "index_study_groups_on_learning_resource_id"
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.text "zoom_oauth_data"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.string "provider"
-    t.string "uid"
-    t.string "name"
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  end
+# Could not dump table "users" because of following StandardError
+#   Unknown type 'strig' for column 'zoom_user_id'
 
   add_foreign_key "study_group_attendances", "study_groups"
   add_foreign_key "study_group_attendances", "users"
-  add_foreign_key "study_groups", "learning_resources", column: "learning_resources_id"
+  add_foreign_key "study_groups", "learning_resources"
 end

@@ -1,8 +1,6 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Learning Resources</h1>
 
-<table>
+<table class='table'>
   <thead>
     <tr>
       <th>Url</th>
@@ -16,7 +14,7 @@
       <tr>
         <td><%= learning_resource.url %></td>
         <td><%= learning_resource.description %></td>
-        <td><%= link_to 'Join a study group', learning_resource %></td>
+        <td><%= link_to 'Sign up for next meeting', sign_up_for_next_meeting_learning_resource_path(learning_resource), method: 'POST', class: 'btn btn-primary' %></td>
       </tr>
     <% end %>
   </tbody>

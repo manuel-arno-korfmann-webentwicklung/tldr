@@ -1,0 +1,8 @@
+<p id="notice"><%= notice %></p>
+
+
+<%- if @study_group.study_group_attendances.count == 1 && @study_group.study_group_attendances.first.user == current_user %>
+<p>
+	You are the first one here, please wait for other people to join.
+</p>
+<%- end %>

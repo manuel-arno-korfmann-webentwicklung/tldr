@@ -1,7 +1,15 @@
 class LearningResourcesController < ApplicationController
-  before_action :set_learning_resource, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:show]
+  before_action :set_learning_resource, only: [:show, :edit, :update, :destroy, :sign_up_for_next_meeting]
+  before_action :authenticate_user!, only: [:sign_up_for_next_meeting]
 
+  def sign_up_for_next_meeting
+    next_study_group = StudyGroup.find_or_create_by(finished: false, learning_resource: @learning_resource)
+    
+    next_study_group.study_group_attendances.find_or_create_by(user: current_user)
+    
+    redirect_to study_group_path(next_study_group)
+  end
+  
   # GET /learning_resources
   # GET /learning_resources.json
   def index
