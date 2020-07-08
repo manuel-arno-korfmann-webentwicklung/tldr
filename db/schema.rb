@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_08_113034) do
+ActiveRecord::Schema.define(version: 2020_07_08_143237) do
 
   create_table "learning_resources", force: :cascade do |t|
     t.text "url"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2020_07_08_113034) do
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "host"
     t.index ["study_group_id"], name: "index_study_group_attendances_on_study_group_id"
     t.index ["user_id"], name: "index_study_group_attendances_on_user_id"
   end
@@ -33,6 +34,7 @@ ActiveRecord::Schema.define(version: 2020_07_08_113034) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "finished"
+    t.text "zoom_meeting_join_url"
     t.index ["learning_resource_id"], name: "index_study_groups_on_learning_resource_id"
   end
 

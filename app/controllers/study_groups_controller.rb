@@ -1,6 +1,20 @@
 class StudyGroupsController < ApplicationController
-  before_action :set_study_group, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_study_group, only: [:show, :edit, :update, :destroy, :create_zoom_meeting]
+  before_action :authenticate_user!
+  
+  def create_zoom_meeting
+    zoom_api_client = Zoom::Client::OAuth.new(access_token: User.first.zoom_oauth_data.token)
+    zoom_meeting = zoom_api_client.meeting_create(user_id: User.first.zoom_user_id)
+    
+    @study_group.zoom_meeting_join_url = zoom_meeting["join_url"]
+    @study_group.save!
+    
+    @study_group.study_group_attendances.where(user: current_user).first.update_attribute(:host, true)
+    
+    redirect_to @study_group
+  end
+  
+  
   # GET /study_groups
   # GET /study_groups.json
   def index

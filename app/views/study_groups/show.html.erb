@@ -6,3 +6,21 @@
 	You are the first one here, please wait for other people to join.
 </p>
 <%- end %>
+
+<h3>
+	Members (<%= @study_group.study_group_attendances.count %>)
+</h3>
+<ul class="list-group">
+  <%- @study_group.study_group_attendances.each do |study_group_attendance| %>
+    <li class="list-group-item"><%= study_group_attendance.description %></li>
+  <%- end %>
+</ul>
+
+<br />
+
+<%- if @study_group.zoom_meeting_join_url.present? %>
+	<%= link_to "Join Zoom Meeting", @study_group.zoom_meeting_join_url, class: 'btn btn-primary', rel: "_blank" %>
+<%- else %>
+	<%= link_to "Create Zoom Meeting", create_zoom_meeting_study_group_path(@study_group), class: 'btn btn-primary', method: 'POST' %>
+<%- end %>
+<%# link_to "Finish", finish_study_group_path(@study_group), class: 'btn btn-danger' %>

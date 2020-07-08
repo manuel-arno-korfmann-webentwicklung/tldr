@@ -7,7 +7,12 @@ Rails.application.routes.draw do
     end
   end  
 
-  resources :study_groups
+  resources :study_groups do
+    member do
+      post :create_zoom_meeting
+      post :finish
+    end
+  end
   
   root to: 'learning_resources#index'
 end
