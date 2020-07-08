@@ -1,1 +1,5 @@
-Hey, <%= session[:auth_hash]['info']['name'] %>
+<%- if session[:auth_hash].present? %>
+	Hey, <%= session[:auth_hash] %>
+<%- else %>
+	<%= link_to "Login via zoom.us", '/auth/zoom' %>
+<%- end %>
