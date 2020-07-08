@@ -1,5 +1,4 @@
-class SessionsController < ApplicationController
-  def create
+
     class SessionsController < ApplicationController
       def create
         # @user = User.find_or_create_from_auth_hash(auth_hash)
@@ -14,5 +13,4 @@ class SessionsController < ApplicationController
         request.env['omniauth.auth']
       end
     end
-  end
-end
+ 
