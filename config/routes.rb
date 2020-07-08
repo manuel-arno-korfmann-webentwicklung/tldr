@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
+  resources :learning_resources
   get '/auth/:provider/callback', to: 'sessions#create'
   
-  root to: 'home#index'
+  root to: 'learning_resources#index'
 end
