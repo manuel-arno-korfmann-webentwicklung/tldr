@@ -18,9 +18,9 @@
 
 <br />
 
-<%- if @study_group.zoom_meeting_join_url.present? %>
 	<%= link_to "Join Zoom Meeting", @study_group.zoom_meeting_join_url, class: 'btn btn-primary', rel: "_blank" %>
-<%- else %>
+	
+	&nbsp;
+	
 	<%= link_to "Create Zoom Meeting", create_zoom_meeting_study_group_path(@study_group), class: 'btn btn-primary', method: 'POST' %>
-<%- end %>
 <%# link_to "Finish", finish_study_group_path(@study_group), class: 'btn btn-danger' %>
