@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Study group attendance:</strong>
+  <%= @study_group_event_attendance.study_group_attendance_id %>
+</p>
+
+<p>
+  <strong>Study group event:</strong>
+  <%= @study_group_event_attendance.study_group_event_id %>
+</p>
+
+<%= link_to 'Edit', edit_study_group_event_attendance_path(@study_group_event_attendance) %> |
+<%= link_to 'Back', study_group_event_attendances_path %>

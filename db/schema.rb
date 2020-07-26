@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_08_143237) do
+ActiveRecord::Schema.define(version: 2020_07_26_110709) do
 
   create_table "learning_resources", force: :cascade do |t|
     t.text "url"
@@ -29,6 +29,23 @@ ActiveRecord::Schema.define(version: 2020_07_08_143237) do
     t.index ["user_id"], name: "index_study_group_attendances_on_user_id"
   end
 
+  create_table "study_group_event_attendances", force: :cascade do |t|
+    t.integer "study_group_attendance_id", null: false
+    t.integer "study_group_event_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["study_group_attendance_id"], name: "index_sg_event_attendances_on_sg_attendance_id"
+    t.index ["study_group_event_id"], name: "index_study_group_event_attendances_on_study_group_event_id"
+  end
+
+  create_table "study_group_events", force: :cascade do |t|
+    t.datetime "date"
+    t.integer "study_group_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["study_group_id"], name: "index_study_group_events_on_study_group_id"
+  end
+
   create_table "study_groups", force: :cascade do |t|
     t.integer "learning_resource_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -43,5 +60,7 @@ ActiveRecord::Schema.define(version: 2020_07_08_143237) do
 
   add_foreign_key "study_group_attendances", "study_groups"
   add_foreign_key "study_group_attendances", "users"
+  add_foreign_key "study_group_event_attendances", "study_group_attendances"
+  add_foreign_key "study_group_event_attendances", "study_group_events"
   add_foreign_key "study_groups", "learning_resources"
 end

@@ -1,0 +1,22 @@
+<%= form_with(model: study_group_event, local: true) do |form| %>
+  <% if study_group_event.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(study_group_event.errors.count, "error") %> prohibited this study_group_event from being saved:</h2>
+
+      <ul>
+        <% study_group_event.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :date %>
+    <%= form.datetime_select :date %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

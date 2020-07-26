@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :study_group_event_attendances
+  resources :study_group_events
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   
   resources :learning_resources do

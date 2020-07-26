@@ -24,3 +24,21 @@
 	
 	<%= link_to "Create Zoom Meeting", create_zoom_meeting_study_group_path(@study_group), class: 'btn btn-primary', method: 'POST' %>
 <%# link_to "Finish", finish_study_group_path(@study_group), class: 'btn btn-danger' %>
+	
+	
+	
+
+<br />
+
+<br />
+<br />
+
+<h5>Schedule</h5>
+
+<ul class="list-group">
+  <%- @study_group.study_group_events.each do |study_group_event| %>
+    <li class="list-group-item">
+		<%= study_group_event.date.strftime("%d %b, %Y") + '  ' + study_group_event.date.strftime("%I:%M%P %Z") %>
+    </li>
+  <%- end %>
+</ul>

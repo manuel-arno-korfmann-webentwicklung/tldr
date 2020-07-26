@@ -1,0 +1,2 @@
+class StudyGroupEvent < ApplicationRecord
+end

@@ -1,0 +1,27 @@
+<%= form_with(model: study_group_event_attendance, local: true) do |form| %>
+  <% if study_group_event_attendance.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(study_group_event_attendance.errors.count, "error") %> prohibited this study_group_event_attendance from being saved:</h2>
+
+      <ul>
+        <% study_group_event_attendance.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :study_group_attendance_id %>
+    <%= form.text_field :study_group_attendance_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :study_group_event_id %>
+    <%= form.text_field :study_group_event_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
