@@ -9,7 +9,7 @@ class StudyGroupsController < ApplicationController
     @study_group.zoom_meeting_join_url = zoom_meeting["join_url"]
     @study_group.save!
     
-    @study_group.study_group_attendances.where(host: true).first.update_attribute(:host, false)
+    @study_group.study_group_attendances.where(host: true).first.try(:update_attribute, :host, false)
     @study_group.study_group_attendances.where(user: current_user).first.update_attribute(:host, true)
     
     redirect_to @study_group
