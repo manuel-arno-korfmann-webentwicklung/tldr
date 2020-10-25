@@ -2,8 +2,7 @@ FROM gitpod/workspace-full
 
 USER gitpod
 
-RUN apt-get update -q && \
-    apt-get install -qy procps curl ca-certificates gnupg2 build-essential --no-install-recommends && apt-get clean
+RUN apt-get update -q
 
 RUN gpg2 --keyserver hkp://keys.gnupg.net --recv-keys D39DC0E3
 RUN curl -sSL https://get.rvm.io | bash -s
