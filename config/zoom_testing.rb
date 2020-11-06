@@ -11,4 +11,8 @@ url = "https://zoom.us/oauth/token?grant_type=refresh_token&refresh_token=#{User
 auth_header = "Authorization: Basic #{Base64.encode64(api_key + api_secret)}"
 
 
-p `curl --http1.1 -i -H "#{auth_header}" -H "Accept: application/json" -H "Content-Type: application/json" #{url}`
+curl_response = `curl --http1.1 -H "#{auth_header}" -H "Accept: application/json" -H "Content-Type: application/json" #{url}`
+
+
+
+p curl_response
