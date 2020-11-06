@@ -1,4 +1,3 @@
-require 'zoom'
 
 Zoom.configure do |c|
   c.api_key = Rails.application.credentials.zoom[:oauth][:app_key]
