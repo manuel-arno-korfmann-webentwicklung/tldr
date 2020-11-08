@@ -3,8 +3,8 @@ class StudyGroupsController < ApplicationController
   before_action :authenticate_user!
   
   def create_zoom_meeting
-    zoom_api_client = Zoom::Client::OAuth.new(access_token: User.first.zoom_oauth_data.token)
-    zoom_meeting = zoom_api_client.meeting_create(user_id: User.first.zoom_user_id)
+    zoom_api_client = Zoom::Client::OAuth.new(access_token: User.last.zoom_oauth_data.token)
+    zoom_meeting = zoom_api_client.meeting_create(user_id: User.last.zoom_user_id)
     
     @study_group.zoom_meeting_join_url = zoom_meeting["join_url"]
     @study_group.save!
