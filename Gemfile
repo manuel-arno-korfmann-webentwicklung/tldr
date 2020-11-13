@@ -62,7 +62,7 @@ gem "omniauth-zoom", "~> 0.1.0"
 
 gem "devise", "~> 4.7"
 
-gem 'zoom_rb'
+gem 'zoom_rb', git: "https://github.com/hintmedia/zoom_rb.git"
 
 #gem 'bootstrap', '5.0.0-alpha1'
 
